@@ -39,9 +39,9 @@ const Header = () => {
               </li>
             ) : (
               <li className="nav-item mx-3">
-                <Link to="/" className="nav-link">
+                {user?.role!=='donar' && <Link to="/" className="nav-link">
                   Home
-                </Link>
+                </Link>}
               </li>
             )}
             <li className="nav-item mx-3">

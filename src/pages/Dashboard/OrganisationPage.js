@@ -7,22 +7,29 @@ import API from "../../services/API";
 const OrganisationPage = () => {
   // get current user
   const { user } = useSelector((state) => state.auth);
+  console.log(user,"user")
   const [data, setData] = useState([]);
   //find org records
   const getOrg = async () => {
     try {
       if (user?.role === "donar") {
-        const { data } = await API.get("/inventory/get-orgnaisation");
-        //   console.log(data);
+        console.log("userid",user?._id)
+        const { data } = await API.get("/inventory/get-orgnaisation", {
+          userId: user?._id// Sending userId in the request body
+        });
+          console.log(data,"hey");
+         
         if (data?.success) {
           setData(data?.organisations);
         }
       }
-      if (user?.role === "hospital") {
+      else if (user?.role === "hospital") {
         const { data } = await API.get(
-          "/inventory/get-orgnaisation-for-hospital"
+          "/inventory/get-orgnaisation-for-hospital", {
+            userId: user?.userId // Sending userId in the request body
+          }
         );
-        //   console.log(data);
+          console.log(data,"hi hopital");
         if (data?.success) {
           setData(data?.organisations);
         }

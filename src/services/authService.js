@@ -23,7 +23,7 @@ export const handleRegister = (
   organisationName,
   address,
   hospitalName,
-  website
+  website,userBloodGroup
 ) => {
   e.preventDefault();
   try {
@@ -37,7 +37,7 @@ export const handleRegister = (
         organisationName,
         address,
         hospitalName,
-        website,
+        website,userBloodGroup
       })
     );
   } catch (error) {

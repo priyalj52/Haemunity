@@ -13,6 +13,8 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [website, setWebsite] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
+  const [userBloodGroup,setUserBloodGroup]=useState("")
+  console.log(role,"user role")
   return (
     <div>
       <form
@@ -30,7 +32,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               organisationName,
               address,
               hospitalName,
-              website
+              website,userBloodGroup
             );
         }}
       >
@@ -51,7 +53,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               Donar
             </label>
           </div>
-          <div className="form-check ms-2">
+         { (formType === "login") && <div className="form-check ms-2">
             <input
               type="radio"
               className="form-check-input"
@@ -64,6 +66,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               Admin
             </label>
           </div>
+          }
           <div className="form-check ms-2">
             <input
               type="radio"
@@ -130,6 +133,16 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   )}
+                     {role === "donar" && (
+                    <InputType
+                      labelText={"Blood group"}
+                      labelFor={"Blood Group"}
+                      inputType={"text"}
+                      name={"Blood Group"}
+                      value={userBloodGroup}
+                      onChange={(e) => setUserBloodGroup(e.target.value)}
+                    />
+                  )}
                   {role === "organisation" && (
                     <InputType
                       labelText={"Organisation Name"}
@@ -167,14 +180,15 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <InputType
+                 {(role === "hospital"  || role === "organisation") &&
+                 <InputType
                     labelText={"website"}
                     labelFor={"forWebsite"}
                     inputType={"text"}
                     name={"website"}
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}
-                  />
+                  />}
                   <InputType
                     labelText={"Address"}
                     labelFor={"forAddress"}
