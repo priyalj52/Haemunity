@@ -28,7 +28,7 @@ const Sidebar = () => {
                 }`}
               >
                 <i className="fa-solid fa-hand-holding-medical"></i>
-                <Link to="/donar">Donar</Link>
+                <Link to="/donar">Donor</Link>
               </div>
               <div
                 className={`menu-item ${

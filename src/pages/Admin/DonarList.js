@@ -59,6 +59,7 @@ const DonarList = () => {
               <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
               <td>
                 <button
+                style={{backgroundColor:'#2d3282'}}
                   className="btn btn-danger"
                   onClick={() => handelDelete(record._id)}
                 >

@@ -43,7 +43,7 @@ const askAgain=()=>{
     
         <div className="container-fluid ">
           <div className="navbar-brand h1 ">
-            <BiDonateBlood color="red" /> Blood Bank App
+            <BiDonateBlood color="#2d3282" /> Haemunity
           </div>
           <ToastContainer
 position="top-right"
@@ -83,7 +83,8 @@ theme="dark"
               </li>
             )}
             <li className="nav-item mx-3">
-              <button className="btn btn-danger" onClick={askAgain}>
+          
+              <button style={{backgroundColor: '#2d3282',color:'white'}} className="btn" onClick={askAgain}>
                 Logout
               </button>
             </li>
