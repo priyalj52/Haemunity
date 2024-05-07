@@ -9,36 +9,23 @@ const AdminHome = () => {
       <div className="container">
         <div className="d-felx flex-column mt-4">
           <h1>
-            Welcome Admin <i className="text-success">{user?.name}</i>
+            Welcome  <i className="text-success">{user?.name}</i>
           </h1>
-          <h3>Manage Blood Bank App </h3>
+          <h3>Haemunity </h3>
           <hr />
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-            explicabo animi blanditiis incidunt dicta quia, quibusdam facere
-            corporis! Dolores, reprehenderit cum sed repellat laudantium
-            architecto natus est nostrum accusamus, odio aspernatur minima
-            fugiat quam molestiae nisi. Temporibus impedit dolorem quia.
-            Distinctio modi non excepturi illo odio voluptatum quae nostrum a
-            temporibus sequi! Explicabo, quasi consequatur ad qui quos labore
-            distinctio voluptates alias nostrum ab dicta aspernatur molestias
-            adipisci quibusdam error ipsa. Totam, tenetur dolores eaque tempora
-            officiis deserunt assumenda? Rerum nemo est nihil laudantium
-            necessitatibus. Possimus, voluptatem voluptates blanditiis quas
-            aspernatur, quam, quaerat minus maiores ipsam sint perferendis
-            dolor. Dignissimos voluptatem doloribus sint in quis omnis, atque
-            neque praesentium voluptatum suscipit. Quas esse, accusantium maxime
-            obcaecati iure officiis aperiam minus alias quod cum quos qui
-            voluptatibus, numquam, ad id dolore odit! Minima laudantium sunt,
-            explicabo nesciunt quos voluptatibus qui libero eligendi praesentium
-            debitis obcaecati similique assumenda nobis labore totam dolore
-            perferendis adipisci fugiat quibusdam tempore doloremque voluptatum
-            accusantium. Accusamus, incidunt sequi. Esse sunt officia fuga,
-            officiis saepe tempora repellat suscipit aliquid cupiditate
-            perferendis, asperiores architecto molestiae rem iste eaque
-            molestias reiciendis. Laborum modi asperiores, reprehenderit
-            assumenda numquam, vitae exercitationem illum nesciunt, dolorum
-            deleniti accusamus consequatur id. Necessitatibus dolore ad fugit?
+            "Welcome to the lifeline of humanity – the Blood Bank App. Your go-to platform for
+            managing and tracking blood donations, saving lives one pint at a time. Join us in this
+            noble mission of giving the gift of life.”<br></br>
+            In a world where every drop counts, our Blood Bank App serves as a beacon of hope
+            and solidarity. Seamlessly bridging the gap between donors and recipients, our
+            platform revolutionizes the way blood donation is managed and tracked. With just a
+            few taps, hospitals, organizations, and donors can effortlessly keep track of their
+            donations, ensuring efficient inventory management and timely access to blood
+            when needed the most.<br></br>
+            Join our community of altruistic souls, where every donation is a testament to the
+            power of humanity. Together, let's make a difference and ensure that no one ever
+            faces a shortage of the precious gift of life.
           </p>
         </div>
       </div>
