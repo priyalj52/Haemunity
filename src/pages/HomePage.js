@@ -6,6 +6,8 @@ import Layout from "../components/shared/Layout/Layout";
 import Modal from "../components/shared/modal/Modal";
 import API from "../services/API";
 import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomePage = () => {
   const { loading, error, user } = useSelector((state) => state.auth);
@@ -32,7 +34,16 @@ const HomePage = () => {
     <Layout>
       {user?.role === "admin" && navigate("/admin")}
       {user?.role === "donar" && navigate("/orgnaisation")}
-      {error && <span>{alert(error)}</span>}
+      {error && <span>{  toast.error(error, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        })}</span>}
       {loading ? (
         <Spinner />
       ) : (
@@ -44,9 +55,21 @@ const HomePage = () => {
               data-bs-target="#staticBackdrop"
               style={{ cursor: "pointer" }}
             >
-              <i className ="fa-solid fa-plus text-success py-4"></i>
-              Add Inventory
+              <i className ="fa-solid fa-plus text-success py-4 "></i>
+              <span className="mx-2">Add Inventory</span>
             </h4>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
             <table className="table ">
               <thead>
                 <tr>

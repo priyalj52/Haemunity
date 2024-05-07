@@ -211,7 +211,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           }
         })()}
 
-        <div className="d-flex flex-row justify-content-between">
+        <div className="d-flex flex-row justify-content-between align-items-center p-3">
           {formType === "login" ? (
             <p>
               Not registerd yet ? Register

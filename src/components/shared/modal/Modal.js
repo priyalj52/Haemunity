@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import InputType from "./../Form/InputType";
 import API from "./../../../services/API";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Modal = () => {
   const [inventoryType, setInventoryType] = useState("in");
   const [bloodGroup, setBloodGroup] = useState("");
@@ -23,7 +24,16 @@ const Modal = () => {
         quantity,
       });
       if (data?.success) {
-        alert("New Record Created");
+        toast.success(" New record created", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
         window.location.reload();
       }
     } catch (error) {
@@ -51,6 +61,18 @@ const Modal = () => {
               <h1 className="modal-title fs-5" id="staticBackdropLabel">
                 Manage Blood Record
               </h1>
+              <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
               <button
                 type="button"
                 className="btn-close"
@@ -104,20 +126,24 @@ const Modal = () => {
                 <option value={"B+"}>B+</option>
                 <option value={"B-"}>B-</option>
               </select>
-              {inventoryType==='in'&& <InputType
-                 labelText={"Donar Email"}
-                labelFor={"donarEmail"}
-                inputType={"email"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />}
-                {inventoryType==='out'&& <InputType
-                 labelText={"Hospital Email"}
-                labelFor={"Hospital Email"}
-                inputType={"email"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />}
+              {inventoryType === "in" && (
+                <InputType
+                  labelText={"Donar Email"}
+                  labelFor={"donarEmail"}
+                  inputType={"email"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              )}
+              {inventoryType === "out" && (
+                <InputType
+                  labelText={"Hospital Email"}
+                  labelFor={"Hospital Email"}
+                  inputType={"email"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              )}
               <InputType
                 labelText={"Quanitity (ML)"}
                 labelFor={"quantity"}
