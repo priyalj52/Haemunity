@@ -16,6 +16,8 @@ import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
 import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
+import ForgotPassword from "./pages/auth/ForgotPass";
+import ResetPassword from "./pages/auth/ResetPass";
 function App() {
   return (
     <>
@@ -126,6 +128,19 @@ function App() {
             </PublicRoute>
           }
         />
+        <Route path="/forgot-password" element={
+          <PublicRoute>
+            <ForgotPassword />
+          </PublicRoute>
+        } />
+
+<Route path="/reset-password/:token" element={
+          <PublicRoute>
+           
+            <ResetPassword />
+          </PublicRoute>
+        } />
+
       </Routes>
     </>
   );

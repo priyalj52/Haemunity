@@ -74,9 +74,15 @@ const Sidebar = () => {
                 location.pathname === "/orgnaisation" && "active"
               }`}
             >
+           
               <i className="fa-sharp fa-solid fa-building-ngo"></i>
-              <Link to="/orgnaisation">Orgnaisation</Link>
+              <Link to="/orgnaisation"> {user.role==="donar" ?"Organisation/Hospital":"Organisation"} </Link>
+
+
+
+
             </div>
+            
           )}
           {user?.role === "hospital" && (
             <div

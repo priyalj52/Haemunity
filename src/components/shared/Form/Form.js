@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
-import { handleLogin, handleRegister } from "../../../services/authService";
-
+import { handleForgotPass, handleLogin, handleRegister, handleResetPassword } from "../../../services/authService";
+import { useParams } from 'react-router-dom';
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [oldpassword, setOldPassword] = useState("");
   const [role, setRole] = useState("donar");
   const [name, setName] = useState("");
   const [organisationName, setOrganisationName] = useState("");
@@ -15,12 +16,15 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   const [phone, setPhone] = useState("");
   const [userBloodGroup,setUserBloodGroup]=useState("")
   console.log(role,"user role")
+  const {token}=useParams()
   return (
     <div>
       <form
         onSubmit={(e) => {
           if (formType === "login")
             return handleLogin(e, email, password, role);
+          else  if (formType === "ResetPassword")
+            return handleResetPassword(e, token,email, oldpassword,password);
           else if (formType === "register")
             return handleRegister(
               e,
@@ -34,13 +38,16 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               hospitalName,
               website,userBloodGroup
             );
+            else if(formType==="ForgotPassword")
+              return handleForgotPass(e, email)
+            
         }}
       >
-        <h1 className="text-center">{formTitle}</h1>
+        <h2 className="text-center">{formTitle}</h2>
         <hr />
         <div className="d-flex mb-3">
-          <div className="form-check">
-            <input
+        {formType!=="ForgotPassword" && formType!=="ResetPassword" && <div className="form-check">
+            <div><input
               type="radio"
               className="form-check-input"
               name="role"
@@ -52,8 +59,9 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             <label htmlFor="adminRadio" className="form-check-label">
               Donor
             </label>
-          </div>
-         { (formType === "login") && <div className="form-check ms-2">
+            </div> 
+          </div>}
+         { (formType === "login") &&  formType!=="ResetPassword" && <div className="form-check ms-2">
             <input
               type="radio"
               className="form-check-input"
@@ -67,7 +75,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             </label>
           </div>
           }
-          <div className="form-check ms-2">
+         {formType!=="ForgotPassword" && formType!=="ResetPassword" && <div className="form-check ms-2">
             <input
               type="radio"
               className="form-check-input"
@@ -79,8 +87,8 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             <label htmlFor="hospitalRadio" className="form-check-label">
               Hospital
             </label>
-          </div>
-          <div className="form-check ms-2">
+          </div>}
+          {formType!=="ForgotPassword" && formType!=="ResetPassword" && <div className="form-check ms-2">
             <input
               type="radio"
               className="form-check-input"
@@ -92,7 +100,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             <label htmlFor="organisationRadio" className="form-check-label">
               Organisation
             </label>
-          </div>
+          </div>}
         </div>
         {/* switch statement */}
         {(() => {
@@ -208,24 +216,104 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                 </>
               );
             }
+            case formType === "ForgotPassword":{
+              return(
+                <>
+                    <InputType
+                    labelText={"email"}
+                    labelFor={"forEmail"}
+                    inputType={"email"}
+                    name={"email"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  
+                  {/* <InputType
+                    labelText={"Password"}
+                    labelFor={"forPassword"}
+                    inputType={"password"}
+                    name={"password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  /> */}
+                </>
+              )
+            }
+
+            case formType === "ResetPassword":{
+              return(
+                <>
+                    <InputType
+                    labelText={"email"}
+                    labelFor={"forEmail"}
+                    inputType={"email"}
+                    name={"email"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <InputType
+                    labelText={"Old Password"}
+                    labelFor={"forPassword"}
+                    inputType={"password"}
+                    name={"oldpassword"}
+                    value={oldpassword}
+                    onChange={(e) => setOldPassword(e.target.value)}
+                  />
+                   <InputType
+                    labelText={"Password"}
+                    labelFor={"forPassword"}
+                    inputType={"password"}
+                    name={"password"}
+                    value={password}
+                    required 
+                    // pattern="^[a-zA-Z/d]{3,7}$"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  
+                </>
+              )
+            }
+
+
+
+
           }
         })()}
+      
 
-        <div className="d-flex flex-row justify-content-between align-items-center p-3">
-          {formType === "login" ? (
-            <p>
-              Not registerd yet ? Register
-              <Link to="/register"> Here !</Link>
-            </p>
-          ) : (
-            <p>
-              ALready Usser Please
-              <Link to="/login"> Login !</Link>
-            </p>
-          )}
-          <button className="btn btn-primary" type="submit">
+        <div className="d-flex flex-column justify-content-between align-items-center ">
+        <button className="btn btn-primary " style={{background:"#2d3282",margin:10,width:"10rem"}} type="submit">
             {submitBtn}
           </button>
+          {formType === "login" && (
+            <div className="d-flex gap-2">
+             <p>
+              Register
+              <Link to="/register"   > Here !</Link>
+            </p>
+            <p>
+              <Link to="/forgot-password">
+                Forgot Password ?
+              </Link>
+              </p>
+            </div>
+
+          ) }
+           {formType==="register" && (
+            
+            <p>
+              Already User Please
+              <Link to="/login" > Login ! </Link>
+            </p>
+          )}
+          {((formType==="ForgotPassword") || (formType==="ResetPassword")) && (
+            
+            <p>
+            
+              <Link to="/" >   Go Back</Link>
+            </p>
+          )}
+         
         </div>
       </form>
     </div>

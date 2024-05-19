@@ -7,14 +7,14 @@ const Analytics = () => {
   const [data, setData] = useState([]);
   const [inventoryData, setInventoryData] = useState([]);
   const colors = [
-    "#884A39",
-    "#C38154",
-    "#FFC26F",
-    "#4F709C",
-    "#4942E4",
-    "#0079FF",
-    "#FF0060",
-    "#22A699",
+    "#F1EFFF",
+    "#DFF1E4",
+    "#FCE8ED",
+   "#FEFDF0",
+    "#FFFAF5",
+    "#F1EFFF",
+    "#F1E2FF",
+    "#DFFFF5",
   ];
   //GET BLOOD GROUP DATA
   const getBloodGroupData = async () => {
@@ -77,15 +77,15 @@ const Analytics = () => {
           </div>
         ))}
       </div>
-      <div className="p-2">
+      <div className="">
 
      
-      <div className="  d-flex flex-column justify-content-center align-items-start  " style={{}}>
-        <h1 className="mt-5">Recent Blood Transactions</h1>
-        <table className="table ">
+      <div className="    " style={{margin:"4.5rem"}}>
+        <h1 className=" ">Recent Blood Transactions</h1>
+        <table className="table   ">
           <thead>
             <tr>
-              <th scope="col">Blood Group</th>
+              <th scope="col ">Blood Group</th>
               <th scope="col">Inventory Type</th>
               <th scope="col">Quantity</th>
               <th scope="col">Donor Email</th>
@@ -95,7 +95,7 @@ const Analytics = () => {
           <tbody>
             {inventoryData?.map((record) => (
               <tr key={record._id}>
-                <td>{record.bloodGroup}</td>
+                <td classname="pr-2">{record.bloodGroup}</td>
                 <td>{record.inventoryType}</td>
                 <td>{record.quantity} (ML)</td>
                 <td>{record.email}</td>

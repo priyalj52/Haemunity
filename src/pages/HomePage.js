@@ -55,12 +55,15 @@ const HomePage = () => {
               data-bs-target="#staticBackdrop"
               style={{ cursor: "pointer" }}
             >
-              <i className ="fa-solid fa-plus text-success py-4 "></i>
+            
+             <i className ="fa-solid fa-plus  py-4 " style={{ color:"#2d3282",padding:2}}></i>
+            
+             
               <span className="mx-2">Add Inventory</span>
             </h4>
             <ToastContainer
                 position="top-right"
-                autoClose={2000}
+                autoClose={4000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick

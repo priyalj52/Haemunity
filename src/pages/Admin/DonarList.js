@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "./../../components/shared/Layout/Layout";
 import moment from "moment";
 import API from "../../services/API";
-
+import { ToastContainer, toast } from "react-toastify";
 const DonarList = () => {
   const [data, setData] = useState([]);
   //find donar records
@@ -31,7 +31,17 @@ const DonarList = () => {
       );
       if (!answer) return;
       const { data } = await API.delete(`/admin/delete-donar/${id}`);
-      alert(data?.message);
+      toast.success(data?.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      // alert(data?.message);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -51,6 +61,18 @@ const DonarList = () => {
           </tr>
         </thead>
         <tbody>
+        <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+              />
           {data?.map((record) => (
             <tr key={record._id}>
               <td>{record.name || record.organisationName + " (ORG)"}</td>

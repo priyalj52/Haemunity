@@ -14,7 +14,17 @@ const Modal = () => {
   const handleModalSubmit = async () => {
     try {
       if (!bloodGroup || !quantity) {
-        return alert("Please Provide All Fields");
+      
+       return toast.error("Please Provide All Fields", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
       const { data } = await API.post("/inventory/create-inventory", {
         email,
@@ -37,7 +47,17 @@ const Modal = () => {
         window.location.reload();
       }
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      // alert(error.response.data.message);
       console.log(error);
       window.location.reload();
     }

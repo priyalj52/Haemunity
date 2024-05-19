@@ -58,7 +58,10 @@ const OrganisationPage = () => {
         <tbody>
           {data?.map((record) => (
             <tr key={record._id}>
-              <td>{record.organisationName}</td>
+              {user?.role=="donar" && 
+              <td>{record.organisationName?record.organisationName:record.hospitalName}</td>}
+            {user?.role!="donar" && 
+              <td>{record.organisationName}</td>}
               <td>{record.email}</td>
               <td>{record.phone}</td>
               <td>{record.address}</td>

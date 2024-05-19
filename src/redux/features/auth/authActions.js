@@ -9,7 +9,17 @@ export const userLogin = createAsyncThunk(
       const { data } = await API.post("/auth/login", { role, email, password });
       //store token
       if (data.success) {
-        alert(data.message);
+        // alert(data.message);
+        toast.success(data?.message, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
         localStorage.setItem("token", data.token);
         window.location.replace("/");
       }
@@ -55,7 +65,18 @@ export const userRegister = createAsyncThunk(
         website,userBloodGroup
       });
       if (data?.success) {
-        alert("User Registerd Successfully");
+        // alert("User Registerd Successfully");
+        toast.success("User Registered Successfully", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        
         window.location.replace("/login");
         // toast.success("User Registerd Successfully");
       }
@@ -89,3 +110,104 @@ export const getCurrentUser = createAsyncThunk(
     }
   }
 );
+
+export const userForgotPass = createAsyncThunk(
+  "auth/forgot-password",
+  async ({ email }, { rejectWithValue }) => {
+    try {
+      const { data } = await API.post("/auth/forgot-password", {  email });
+      //store token
+      if (data.success) {
+        // alert(data.message);
+        toast.success(data?.message, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+        // localStorage.setItem("token", data.token);
+        // window.location.replace("/");
+      }
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+
+
+
+export const userResetPassword = createAsyncThunk(
+  "auth/reset-password",
+  async ({ token,email ,oldpassword,password}, { rejectWithValue }) => {
+    try {
+      const {data} = await API.post(`/auth/reset-password/${token}`, {  email,oldpassword,password });
+      // console.log("dattata",data)
+      // if (!data.success) 
+      //   alert(data.message);
+      // console.log(data)
+        // alert(data?.message);
+
+      //store token
+      // if (data?.success) {
+      
+      //   toast.success(data?.message, {
+      //     position: "top-right",
+      //     autoClose: 2000,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined,
+      //     theme: "dark",
+      //   });
+       
+      //   // localStorage.setItem("token", data.token);
+      //   // window.location.replace("/");
+      // }
+      if (data.success) {
+        toast.success(data.message, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      } else {
+        // alert("hiee")
+        toast.error(data.message, {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+    
+      console.log(data); // Log the data object
+      return data;
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
