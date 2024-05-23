@@ -24,7 +24,7 @@ const Donar = () => {
 
   return (
     <Layout>
-      <table className="table ">
+      <table className="table mt-4 ">
         <thead>
           <tr>
             <th scope="col">Name</th>

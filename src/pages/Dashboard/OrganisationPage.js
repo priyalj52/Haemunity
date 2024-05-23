@@ -45,7 +45,7 @@ const OrganisationPage = () => {
 
   return (
     <Layout>
-      <table className="table ">
+      <table className="table mt-4 ">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -58,9 +58,9 @@ const OrganisationPage = () => {
         <tbody>
           {data?.map((record) => (
             <tr key={record._id}>
-              {user?.role=="donar" && 
+              {user?.role==="donar" && 
               <td>{record.organisationName?record.organisationName:record.hospitalName}</td>}
-            {user?.role!="donar" && 
+            {user?.role!=="donar" && 
               <td>{record.organisationName}</td>}
               <td>{record.email}</td>
               <td>{record.phone}</td>

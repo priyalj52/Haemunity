@@ -85,10 +85,10 @@ export const handleForgotPass = (e, email) => {
 
 
 
-export const handleResetPassword = (e, token,email,oldpassword,password) => {
+export const handleResetPassword = (e, token,email,password) => {
   e.preventDefault();
   try {
-    if ( !email || !password || !oldpassword || !token) {
+    if ( !email || !password ||  !token) {
       return ( toast.error("Please Provide  all the details ", {
         position: "top-right",
         autoClose: 2000,
@@ -104,7 +104,7 @@ export const handleResetPassword = (e, token,email,oldpassword,password) => {
       
 
     }
-    store.dispatch(userResetPassword({ token,email,oldpassword,password }))
+    store.dispatch(userResetPassword({ token,email,password }))
   } catch (error) {
     console.log(error);
   }

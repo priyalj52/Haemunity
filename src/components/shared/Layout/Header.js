@@ -34,10 +34,14 @@ const Header = () => {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" style={{height:"80px"}}>
         <div className="container-fluid ">
-          <div className="navbar-brand h1 ">
-            <BiDonateBlood color="#2d3282" /> Haemunity
+          <div className="navbar-brand h1  ">
+            <BiDonateBlood color="#a4bcfd" size={"32px"} /> 
+            <span style={{color:"#a4bcfd",marginLeft:"6px", marginTop:"5px"}}>
+            Haemunity
+            </span>
+           
           </div>
           <ToastContainer
             position="top-right"
@@ -51,10 +55,10 @@ const Header = () => {
             pauseOnHover
             theme="dark"
           />
-          <ul className="navbar-nav flex-row">
-            <li className="nav-item mx-3">
-              <p className="nav-link">
-                <BiUserCircle /> Welcome{" "}
+          <ul className="navbar-nav flex-row " >
+            <li className="nav-item mx-3"style={{marginTop:"10px"}} >
+              <p className="nav-link "  >
+                <BiUserCircle  size={"24px"}/> Welcome{" "}
                <span style={{marginRight:"20px"}} className="">{user?.name || user?.hospitalName || user?.organisationName}</span> 
                 &nbsp;
                 <span className="badge bg-white text-black p-2 ">{user?.role}</span>
@@ -63,13 +67,13 @@ const Header = () => {
             {location.pathname === "/" ||
             location.pathname === "/donar" ||
             location.pathname === "/hospital" ? (
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-3"style={{marginTop:"12px"}}>
                 <Link to="/analytics" className="nav-link">
                   Analytics
                 </Link>
               </li>
             ) : (
-              <li className="nav-item mx-3">
+              <li className="nav-item mx-3" style={{marginTop:"15px"}}>
                 {user?.role !== "donar" && (
                   <Link to="/" className="nav-link">
                     Home
@@ -77,7 +81,7 @@ const Header = () => {
                 )}
               </li>
             )}
-            <li className="nav-item mx-3">
+            <li className="nav-item mx-3" style={{marginTop:"15px"}}>
               <button
                 style={{ backgroundColor: "#2d3282", color: "white" }}
                 className="btn"

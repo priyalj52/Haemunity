@@ -31,7 +31,8 @@ const HomePage = () => {
     getBloodRecords();
   }, []);
   return (
-    <Layout>
+    <Layout style={{height: "300px",
+      overflowY: "scroll"}}>
       {user?.role === "admin" && navigate("/admin")}
       {user?.role === "donar" && navigate("/orgnaisation")}
       {error && <span>{  toast.error(error, {
@@ -48,7 +49,7 @@ const HomePage = () => {
         <Spinner />
       ) : (
         <>
-          <div className="container">
+          <div className="container" >
             <h4
               className="ms-4"
               data-bs-toggle="modal"
@@ -73,23 +74,33 @@ const HomePage = () => {
                 pauseOnHover
                 theme="dark"
               />
-            <table className="table ">
+              <div style={{height: "400px",
+      overflowY: "scroll"}}>
+
+             
+            <table className="table " >
               <thead>
                 <tr>
                   <th scope="col">Blood Group</th>
                   <th scope="col">Inventory Type</th>
                   <th scope="col">Quantity</th>
                   <th scope="col">Donor Email</th>
-                  <th scope="col">TIme & Date</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Time & Date</th>
+
                 </tr>
               </thead>
               <tbody>
+               { console.log("Data",data)}
                 {data?.map((record) => (
+                 
                   <tr key={record._id}>
+                    
                     <td>{record.bloodGroup}</td>
                     <td>{record.inventoryType}</td>
                     <td>{record.quantity} (ML)</td>
                     <td>{record.email}</td>
+                    {<td>{record.donar?.phone?record.donar?.phone:record.hospital?.phone}</td>}
                     <td>
                       {moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}
                     </td>
@@ -97,6 +108,7 @@ const HomePage = () => {
                 ))}
               </tbody>
             </table>
+            </div>
 
             <Modal />
           </div>

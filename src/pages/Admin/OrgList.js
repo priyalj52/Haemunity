@@ -81,8 +81,8 @@ const OrgList = () => {
               <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
               <td>
                 <button
-                style={{backgroundColor:'#2d3282'}}
-                  className="btn btn-danger"
+                style={{backgroundColor:'#2d3282',color:"white"}}
+                  className="btn btn"
                   onClick={() => handelDelete(record._id)}
                 >
                   Delete

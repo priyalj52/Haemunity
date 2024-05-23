@@ -40,16 +40,22 @@ const Donation = () => {
               <th scope="col">Quantity</th>
               <th scope="col">Email</th>
               <th scope="col">Date</th>
+              <th scope="col">Hospital/Organization</th>
             </tr>
           </thead>
           <tbody>
+            {console.log("dataaaaaaa", data)}
             {data?.map((record) => (
               <tr key={record._id}>
                 <td>{record.bloodGroup}</td>
                 <td>{record.inventoryType}</td>
                 <td>{record.quantity}</td>
+               
                 <td>{record.email}</td>
+          
+
                 <td>{moment(record.createdAt).format("DD/MM/YYYY hh:mm A")}</td>
+                <td>{record?.organisation?.hospitalName?record?.organisation?.hospitalName:record?.organisation?.organisationName}</td>
               </tr>
             ))}
           </tbody>

@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [oldpassword, setOldPassword] = useState("");
+  // const [oldpassword, setOldPassword] = useState("");
   const [role, setRole] = useState("donar");
   const [name, setName] = useState("");
   const [organisationName, setOrganisationName] = useState("");
@@ -24,7 +24,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           if (formType === "login")
             return handleLogin(e, email, password, role);
           else  if (formType === "ResetPassword")
-            return handleResetPassword(e, token,email, oldpassword,password);
+            return handleResetPassword(e, token,email,password);
           else if (formType === "register")
             return handleRegister(
               e,
@@ -133,7 +133,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                 <>
                   {(role === "admin" || role === "donar") && (
                     <InputType
-                      labelText={"Name"}
+                      labelText={"Name*"}
                       labelFor={"forName"}
                       inputType={"text"}
                       name={"name"}
@@ -143,7 +143,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   )}
                      {role === "donar" && (
                     <InputType
-                      labelText={"Blood group"}
+                      labelText={"Blood group*"}
                       labelFor={"Blood Group"}
                       inputType={"text"}
                       name={"Blood Group"}
@@ -153,7 +153,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   )}
                   {role === "organisation" && (
                     <InputType
-                      labelText={"Organisation Name"}
+                      labelText={"Organisation Name*"}
                       labelFor={"fororganisationName"}
                       inputType={"text"}
                       name={"organisationName"}
@@ -163,7 +163,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   )}
                   {role === "hospital" && (
                     <InputType
-                      labelText={"Hospital Name"}
+                      labelText={"Hospital Name*"}
                       labelFor={"forHospitalName"}
                       inputType={"text"}
                       name={"hospitalName"}
@@ -173,7 +173,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   )}
 
                   <InputType
-                    labelText={"email"}
+                    labelText={"Email*"}
                     labelFor={"forEmail"}
                     inputType={"email"}
                     name={"email"}
@@ -181,7 +181,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <InputType
-                    labelText={"Password"}
+                    labelText={"Password*"}
                     labelFor={"forPassword"}
                     inputType={"password"}
                     name={"password"}
@@ -190,7 +190,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                   />
                  {(role === "hospital"  || role === "organisation") &&
                  <InputType
-                    labelText={"website"}
+                    labelText={"Website"}
                     labelFor={"forWebsite"}
                     inputType={"text"}
                     name={"website"}
@@ -198,7 +198,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     onChange={(e) => setWebsite(e.target.value)}
                   />}
                   <InputType
-                    labelText={"Address"}
+                    labelText={"Address*"}
                     labelFor={"forAddress"}
                     inputType={"text"}
                     name={"address"}
@@ -206,7 +206,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     onChange={(e) => setAddress(e.target.value)}
                   />
                   <InputType
-                    labelText={"Phone"}
+                    labelText={"Phone*"}
                     labelFor={"forPhone"}
                     inputType={"text"}
                     name={"phone"}
@@ -251,14 +251,14 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <InputType
+                  {/* <InputType
                     labelText={"Old Password"}
                     labelFor={"forPassword"}
                     inputType={"password"}
                     name={"oldpassword"}
                     value={oldpassword}
                     onChange={(e) => setOldPassword(e.target.value)}
-                  />
+                  /> */}
                    <InputType
                     labelText={"Password"}
                     labelFor={"forPassword"}
