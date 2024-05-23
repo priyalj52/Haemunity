@@ -62,7 +62,8 @@ export const userRegister = createAsyncThunk(
         organisationName,
         address,
         hospitalName,
-        website,userBloodGroup
+        website,
+        userBloodGroup,
       });
       if (data?.success) {
         // alert("User Registerd Successfully");
@@ -76,7 +77,7 @@ export const userRegister = createAsyncThunk(
           progress: undefined,
           theme: "dark",
         });
-        
+
         window.location.replace("/login");
         // toast.success("User Registerd Successfully");
       }
@@ -115,7 +116,7 @@ export const userForgotPass = createAsyncThunk(
   "auth/forgot-password",
   async ({ email }, { rejectWithValue }) => {
     try {
-      const { data } = await API.post("/auth/forgot-password", {  email });
+      const { data } = await API.post("/auth/forgot-password", { email });
       //store token
       if (data.success) {
         // alert(data.message);
@@ -143,23 +144,23 @@ export const userForgotPass = createAsyncThunk(
   }
 );
 
-
-
-
 export const userResetPassword = createAsyncThunk(
   "auth/reset-password",
-  async ({ token,email ,password}, { rejectWithValue }) => {
+  async ({ token, email, password }, { rejectWithValue }) => {
     try {
-      const {data} = await API.post(`/auth/reset-password/${token}`, {  email,password });
+      const { data } = await API.post(`/auth/reset-password/${token}`, {
+        email,
+        password,
+      });
       // console.log("dattata",data)
-      // if (!data.success) 
+      // if (!data.success)
       //   alert(data.message);
       // console.log(data)
-        // alert(data?.message);
+      // alert(data?.message);
 
       //store token
       // if (data?.success) {
-      
+
       //   toast.success(data?.message, {
       //     position: "top-right",
       //     autoClose: 2000,
@@ -170,7 +171,7 @@ export const userResetPassword = createAsyncThunk(
       //     progress: undefined,
       //     theme: "dark",
       //   });
-       
+
       //   // localStorage.setItem("token", data.token);
       //   // window.location.replace("/");
       // }
@@ -198,7 +199,7 @@ export const userResetPassword = createAsyncThunk(
           theme: "dark",
         });
       }
-    
+
       console.log(data); // Log the data object
       return data;
     } catch (error) {
@@ -210,4 +211,3 @@ export const userResetPassword = createAsyncThunk(
     }
   }
 );
-
