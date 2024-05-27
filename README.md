@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+## Haemunity
+### Tech stack : React.JS, MongoDB,Node.JS, Express.JS, Bootstrap,Redux.
+<ul>
+<li>
+  Developed a secure and scalable MERN stack blood donation management app with JWT authentication.
+</li>
+<li>
+  Implemented granular user roles: admins oversee all users, both hospitals and organizations can update blood inventory, and all can monitor user activity and blood donation trends.
+</li>
+<li>Streamlined blood donation workflows for adding/updating inventory (hospitals & organizations), monitoring trends (hospitals & organizations), and donor registration/scheduling.</li>
+<li>Built an automated donor notification system based on blood group for urgent needs, maximizing successful donations.</li>
+</ul>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Screenshots
+#### Login
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/f36a5335-244a-441a-8e6a-8d982dddc127"/>
 
-In the project directory, you can run:
+#### Register
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/b123d8c9-b38b-4b0a-8c6c-039c47cbc5b2"/>
 
-### `npm start`
+#### Donor
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/e1eea147-623b-43c1-b004-13ab8186c68e"/>
 
-### `npm test`
+#### Hospital
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/9738adb2-0eb1-4253-882e-ac4ccf2bc90d"/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Organisation
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/d4bed845-655b-4f05-a4f9-a5df5df37bab"/>
 
-### `npm run build`
+#### Admin
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/1ab21349-d3c0-4418-849b-1e7a72de42c0"/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Analytics
+<img src="https://github.com/priyalj52/Haemunity/assets/94099575/5b88592b-546e-40c2-9683-ecec8b02d488"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
